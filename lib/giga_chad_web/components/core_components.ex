@@ -113,6 +113,10 @@ defmodule GigaChadWeb.CoreComponents do
       :if={msg = render_slot(@inner_block) || Phoenix.Flash.get(@flash, @kind)}
       id={@id}
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> hide("##{@id}")}
+      x-data="{ show: true }"
+      x-init="setTimeout(() => show = false, 9000)"
+      x-show="show"
+      x-transition
       role="alert"
       class={[
         "fixed bottom-2 right-[10px] sm:mr-2 w-[calc(100%-24px)] max-w-96 z-50 rounded-lg p-3 ring-1",
